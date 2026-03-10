@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "context-gateway"
+version = "1.0.0"
+description = "Context Gateway: federated retrieval across pgvector, Graph Kernel, and Gemini embeddings"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Mohamed Diomande" },
+]
+keywords = [
+    "context-gateway",
+    "retrieval",
+    "pgvector",
+    "echo-suppression",
+    "graph-kernel",
+    "gemini",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=2.0.0",
+    "pydantic>=2.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.23.0",
+    "httpx>=0.25.0",
+    "google-genai>=1.0.0",
+    "structlog>=23.0.0",
+    "prometheus_client>=0.17.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "ruff>=0.1.0",
+]
+supabase = [
+    "supabase>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Diomandeee/context-gateway"
+Repository = "https://github.com/Diomandeee/context-gateway"
+
+[project.scripts]
+context-gateway = "context_gateway.app:main"
+
+[tool.setuptools.packages.find]
+include = ["context_gateway*"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = ["-ra", "-q"]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+select = ["E", "W", "F", "I", "B", "UP"]
