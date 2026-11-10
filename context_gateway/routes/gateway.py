@@ -440,7 +440,7 @@ async def _decompose_query_gemini(query: str) -> List[str]:
 
     system_prompt = (
         "You decompose complex infrastructure questions into 2-3 simpler sub-questions. "
-        "The system has: machines (Mac1-Mac5, cloud-vm), services (RAG++, Graph Kernel, "
+        "The system has: machines (a five-machine mesh and a cloud host), services (RAG++, Graph Kernel, "
         "Prefect, Nexus Portal, NUMU), projects (Cortex, Evolution World, Creator Shield, "
         "Pane Orchestrator), and data stores (Supabase, pgvector). "
         "Each sub-question should target a specific entity or relationship. "
@@ -501,7 +501,7 @@ async def _rlm_search(
         results = await _query_rag_search(query, k, cwd)
         return results, False, [], 0.0, 0, False, 0
 
-    # D2 fix: Use the installed package path, remove Mac1-specific fallback
+    # D2 fix: Use the installed package path, remove machine-specific fallback
     try:
         from cognitive_twin_layers.recursive_explorer import explore, ExplorationConfig
     except ImportError:

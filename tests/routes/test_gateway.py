@@ -108,7 +108,7 @@ class TestShouldDecompose:
         assert _should_decompose("which services across the mesh interact with Supabase") is True
 
     def test_regex_pattern_between_and(self):
-        assert _should_decompose("what is the relationship between Mac1 and cloud-vm infrastructure") is True
+        assert _should_decompose("what is the relationship between the orchestrator and cloud-host infrastructure") is True
 
     def test_no_signal_long_query_not_decomposed(self):
         assert _should_decompose("please list all the files in the src directory now") is False
